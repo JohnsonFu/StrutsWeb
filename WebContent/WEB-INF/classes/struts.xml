@@ -11,5 +11,11 @@
             method="execute">
             <result name="success">/HelloWorld.jsp</result>
       </action>
+      <action name="login" 
+            class="com.tutorialspoint.struts2.LoginAction" 
+            method="execute">
+            <result name="登陆成功">/HelloWorld.jsp</result>
+             <result name="登录失败">/index.jsp</result>
+      </action>
    </package>
 </struts>
