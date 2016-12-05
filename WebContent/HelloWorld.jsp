@@ -5,6 +5,6 @@
 <title>Hello World</title>
 </head>
 <body>
-   Hello World, <s:property value="username"/>
+   Hello World, <s:property value="account"/>
 </body>
 </html>

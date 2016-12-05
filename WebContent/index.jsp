@@ -8,11 +8,11 @@
 </head>
 <body>
    <h1>登录</h1>
-   <form action="login">
+   <s:form action="login">
       <label for="name">登录界面</label><br/>
-      账户名<input type="text" name="username"/><br>
-      密码<input type="text" name="password"/>
-      <input type="submit" value="登录"/>
-   </form>
+    <s:label value="账户名">  </s:label><s:textfield name="account"/><br>
+      <s:label value="密码">  </s:label><s:password name="password"/>
+      <s:submit value="登录"></s:submit>
+   </s:form>
 </body>
 </html>

@@ -21,7 +21,7 @@ public class database {
 		    }  
 		    try {  
 		       conn = DriverManager.getConnection(  
-		          "jdbc:mysql://localhost:3306/new_schema","root","");  }
+		          "jdbc:mysql://localhost:3306/newtable","root","");  }
 		    catch (Exception e) {  
 			      System.out.print("get data error!");  
 			      e.printStackTrace();  

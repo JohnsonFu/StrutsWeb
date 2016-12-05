@@ -4,18 +4,39 @@
    "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
 <constant name="struts.devMode" value="true" />
+<constant name="struts.ui.theme" value="simple" />
    <package name="helloworld" extends="struts-default">
-     
+     <action name="addbook"
+     class="com.tutorialspoint.struts2.action.BookAction"
+     method="add"
+     >
+     <result name="add">/add.jsp</result>
+     <result name="list">/list.jsp</result>
+      </action>
+      
+      <action name="remove"
+     class="com.tutorialspoint.struts2.action.BookAction"
+     method="remove"
+     >
+     <result name="list">/list.jsp</result>
+      </action>
+      
+      <action name="showlist"
+       class="com.tutorialspoint.struts2.action.BookAction"
+     method="list"
+      >
+      <result name="list">/list.jsp</result>
+        </action>
       <action name="hello" 
             class="com.tutorialspoint.struts2.HelloWorldAction" 
             method="execute">
             <result name="success">/HelloWorld.jsp</result>
       </action>
       <action name="login" 
-            class="com.tutorialspoint.struts2.LoginAction" 
-            method="execute">
-            <result name="登陆成功">/HelloWorld.jsp</result>
-             <result name="登录失败">/index.jsp</result>
+            class="com.tutorialspoint.struts2.action.LoginAction" 
+            method="login">
+            <result name="success">/HelloWorld.jsp</result>
+             <result name="login">/index.jsp</result>
       </action>
    </package>
 </struts>
