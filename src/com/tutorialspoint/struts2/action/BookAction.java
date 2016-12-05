@@ -26,7 +26,6 @@ private Map<String,Object> session;
 private DatabaseConnection db;
 private UserDAO dao;
 private String test;
-private String bookname;
 public BookAction(){
 	try {
 		db=new DatabaseConnection();
@@ -56,7 +55,14 @@ public String list(){
 
 public String remove() throws SQLException{
 	//String name=request.getParameter("names");
-	dao.delete(bookname);
+	dao.delete(book.getName());
+	return "list";
+}
+public String modify(){
+	return "modify";
+}
+public String update() throws SQLException{
+	dao.update(book);
 	return "list";
 }
 
@@ -81,10 +87,5 @@ public void setServletContext(ServletContext arg0) {
 	this.application=arg0;
 	
 }
-public String getBookname() {
-	return bookname;
-}
-public void setBookname(String bookname) {
-	this.bookname = bookname;
-}
+
 }

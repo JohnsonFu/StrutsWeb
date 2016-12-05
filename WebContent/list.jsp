@@ -16,14 +16,16 @@
 <th>作者</th>
 <th>价格</th>
 <th>删除</th>
+<th>编辑</th>
 </tr>
 <s:iterator id="item" value="booklist">
 <tr>
-<s:form action="remove">
-<th><input type="hidden" name="bookname" value=<s:property  value='#item.name'/>>${item.name}</th>
-<th><s:label >${item.author}</s:label></th>
-<th><s:label >${item.price }</s:label></th>
-<th><s:submit type="button"  value="删除"/></th>
+<s:form action="edit">
+<th><input type="hidden" name="book.name" value=<s:property  value='#item.name'/>>${item.name}</th>
+<th><input type="hidden" name="book.author" value=<s:property  value='#item.author'/>>${item.author}</th>
+<th><input type="hidden" name="book.price" value=<s:property  value='#item.price'/>>${item.price }</th>
+<th><s:submit type="button" method="remove"  value="删除"/></th>
+<th><s:submit type="button" method="modify"  value="编辑"/></th>
 </s:form>
 </tr>
 

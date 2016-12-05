@@ -43,6 +43,16 @@ public void addBook(Book book) throws SQLException{
 	pstmt.executeUpdate();
 }
 
+public void update(Book book) throws SQLException{
+	 PreparedStatement pstmt=null;
+		String sql="update  booklist set author=?,price=?  where name=?";
+		pstmt=this.con.prepareStatement(sql);
+		pstmt.setString(1,book.getAuthor());
+		pstmt.setDouble(2,book.getPrice());
+		pstmt.setString(3,book.getName());
+		pstmt.executeUpdate();
+}
+
 public void delete(String bookname) throws SQLException{
 	 PreparedStatement pstmt=null;
 		String sql="delete from booklist where name=?";
