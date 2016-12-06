@@ -9,30 +9,28 @@ import com.tutorialspoint.struts2.Database.DatabaseConnection;
 import com.tutorialspoint.struts2.dao.UserDAO;
 
 public class LoginAction extends ActionSupport{
-private String account;
-private String password;
-private UserDAO dao;
-
+private User user=new User();;
+private UserService service;
 public String login() throws Exception{
-	dao=new UserDAO();
-	if(dao.Login(account, password)){
+	if(service.login(user)){
 	//if("test".equalsIgnoreCase(account)&&"test".equalsIgnoreCase(password)){
-		return SUCCESS;
+		return "success";
 	}
-	return LOGIN;
+	return "fail";
 }
-public String getAccount() {
-	return account;
+public UserService getService() {
+	return service;
 }
-public void setAccount(String account) {
-	this.account = account;
+public void setService(UserService service) {
+	this.service = service;
 }
-public String getPassword() {
-	return password;
+public User getUser() {
+	return user;
 }
-public void setPassword(String password) {
-	this.password = password;
+public void setUser(User user) {
+	this.user = user;
 }
+
 
 
 

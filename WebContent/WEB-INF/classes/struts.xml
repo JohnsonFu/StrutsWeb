@@ -14,7 +14,7 @@
      <result name="list">/list.jsp</result>
       </action>
        <action name="usershow"
-     class="com.tutorialspoint.struts2.action.BookAction"
+     class="bookAction"
      method="list"
      >
      <result name="list">/usershow.jsp</result>
@@ -38,10 +38,10 @@
             <result name="success">/HelloWorld.jsp</result>
       </action>
       <action name="login" 
-            class="com.tutorialspoint.struts2.action.LoginAction" 
+            class="loginAction" 
             method="login">
             <result name="success">/HelloWorld.jsp</result>
-             <result name="login">/index.jsp</result>
+             <result name="fail">/index.jsp</result>
       </action>
    </package>
 </struts>

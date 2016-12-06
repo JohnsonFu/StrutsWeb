@@ -11,6 +11,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import com.tutorialspoint.struts2.action.Book;
+import com.tutorialspoint.struts2.action.User;
 
 public class BaseDao<T> {
 	public void add(T object) throws SQLException{
@@ -60,6 +61,27 @@ public class BaseDao<T> {
 		        sf.close();  
 		
 		
+	}
+	
+	public boolean IsExist(User user){
+		Configuration conf = new Configuration()  
+		        // 下面方法默认加载hibernate.cfg.xml文件  
+		                .configure();  
+		        // 以Configuration创建SessionFactory  
+		        SessionFactory sf = conf.buildSessionFactory();  
+		        // 创建Session  
+		        Session sess = sf.openSession();  
+		        // 开始事务  
+		        Transaction tx = sess.beginTransaction();  
+		        
+		        String hql = "FROM User WHERE username = ? AND password = ?";
+		        List<User>list = sess.createQuery(hql).setString(0, user.getUsername()).setString(1, user.getPassword()).list();
+		
+		        if(list.size()>0){
+		   return true;
+		}else{
+			return false;
+		}
 	}
 	
 	public void Remove(T object){

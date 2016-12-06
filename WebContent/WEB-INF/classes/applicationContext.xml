@@ -12,6 +12,11 @@
 	<bean id="serviceimpl" class="com.tutorialspoint.struts2.action.IBookServiceImpl">
 	<property name="dao" ref="daoimpl"></property>
 	</bean>
+	<bean id="loginAction" class="com.tutorialspoint.struts2.action.LoginAction">
+	<property name="service" ref="userimpl"></property>
+	</bean>
+	<bean id="userimpl" class="com.tutorialspoint.struts2.action.UserServiceImpl">
+	<property name="dao" ref="daoimpl"></property></bean>
 	<bean id="daoimpl" class="com.tutorialspoint.struts2.dao.BaseDao"></bean>
 	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
