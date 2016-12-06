@@ -11,12 +11,10 @@ import com.tutorialspoint.struts2.dao.UserDAO;
 public class LoginAction extends ActionSupport{
 private String account;
 private String password;
-private DatabaseConnection db;
 private UserDAO dao;
 
 public String login() throws Exception{
-	db=new DatabaseConnection();
-	dao=new UserDAO(db);
+	dao=new UserDAO();
 	if(dao.Login(account, password)){
 	//if("test".equalsIgnoreCase(account)&&"test".equalsIgnoreCase(password)){
 		return SUCCESS;

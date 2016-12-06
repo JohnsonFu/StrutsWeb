@@ -17,27 +17,19 @@ import com.tutorialspoint.struts2.Database.DatabaseConnection;
 import com.tutorialspoint.struts2.action.Book;
 
 public class UserDAO {
-private Connection con=null;
-public UserDAO(DatabaseConnection db){
-	try {
-		this.con=db.getConnection();
-	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-}
+
 public boolean Login(String account,String password) throws SQLException{
-	 PreparedStatement pstmt=null;
-	 boolean flag=false;
-	String sql="select name from user where userid=? and password=?";
-	pstmt=this.con.prepareStatement(sql);
-	pstmt.setString(1,account);
-	pstmt.setString(2,password);
-	ResultSet rs=pstmt.executeQuery();
-	if(rs.next()){
-		flag=true;
-	}
-	return flag;
+//	 PreparedStatement pstmt=null;
+//	 boolean flag=false;
+//	String sql="select name from user where userid=? and password=?";
+//	pstmt=this.con.prepareStatement(sql);
+//	pstmt.setString(1,account);
+//	pstmt.setString(2,password);
+//	ResultSet rs=pstmt.executeQuery();
+//	if(rs.next()){
+//		flag=true;
+//	}
+	return false;
 }
 public void addBook(Book book) throws SQLException{
 	 Configuration conf = new Configuration()  
@@ -61,13 +53,31 @@ public void addBook(Book book) throws SQLException{
 }
 
 public void update(Book book) throws SQLException{
-	 PreparedStatement pstmt=null;
-		String sql="update  booklist set author=?,price=?  where name=?";
-		pstmt=this.con.prepareStatement(sql);
-		pstmt.setString(1,book.getAuthor());
-		pstmt.setDouble(2,book.getPrice());
-		pstmt.setString(3,book.getName());
-		pstmt.executeUpdate();
+//	 PreparedStatement pstmt=null;
+//		String sql="update  booklist set author=?,price=?  where name=?";
+//		pstmt=this.con.prepareStatement(sql);
+//		pstmt.setString(1,book.getAuthor());
+//		pstmt.setDouble(2,book.getPrice());
+//		pstmt.setString(3,book.getName());
+//		pstmt.executeUpdate();
+	Configuration conf = new Configuration()  
+	        // 下面方法默认加载hibernate.cfg.xml文件  
+	                .configure();  
+	        // 以Configuration创建SessionFactory  
+	        SessionFactory sf = conf.buildSessionFactory();  
+	        // 创建Session  
+	        Session sess = sf.openSession();  
+	        // 开始事务  
+	        Transaction tx = sess.beginTransaction();  
+	        // 创建消息实例  
+	        sess.update(book);
+	        // 提交事务  
+	        tx.commit();  
+	        // 关闭Session  
+	        sess.close();  
+	        sf.close();  
+	
+	
 }
 
 public void delete(String bookname) throws SQLException{

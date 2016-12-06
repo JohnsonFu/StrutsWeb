@@ -23,17 +23,11 @@ private Book book=new Book();
 private HttpServletRequest request;
 private ServletContext application;
 private Map<String,Object> session;
-private DatabaseConnection db;
 private UserDAO dao;
 private String test;
 public BookAction(){
-	try {
-		db=new DatabaseConnection();
-	} catch (Exception e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	dao=new UserDAO(db);
+	
+	dao=new UserDAO();
 }
 public String Add(){
 	return "add";

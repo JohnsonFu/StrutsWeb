@@ -13,7 +13,12 @@
      <result name="add">/add.jsp</result>
      <result name="list">/list.jsp</result>
       </action>
-      
+       <action name="usershow"
+     class="com.tutorialspoint.struts2.action.BookAction"
+     method="list"
+     >
+     <result name="list">/usershow.jsp</result>
+      </action>
       <action name="edit"
      class="com.tutorialspoint.struts2.action.BookAction"
      >
