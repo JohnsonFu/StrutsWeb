@@ -15,6 +15,7 @@ import org.apache.struts2.util.ServletContextAware;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.tutorialspoint.struts2.Database.DatabaseConnection;
+import com.tutorialspoint.struts2.dao.BaseDao;
 import com.tutorialspoint.struts2.dao.UserDAO;
 
 public class BookAction  extends ActionSupport implements ServletContextAware,ServletRequestAware,SessionAware {
@@ -25,9 +26,10 @@ private ServletContext application;
 private Map<String,Object> session;
 private UserDAO dao;
 private String test;
+private BaseDao basedao;
 public BookAction(){
-	
 	dao=new UserDAO();
+	basedao=new BaseDao();
 }
 public String Add(){
 	return "add";
@@ -40,7 +42,7 @@ public void setBook(Book book) {
     this.book = book;  
 }  
 public String add() throws SQLException{
-   dao.addBook(book);
+   basedao.add(book);
 	return "list";
 }
 public String list(){
@@ -49,14 +51,14 @@ public String list(){
 
 public String remove() throws SQLException{
 	//String name=request.getParameter("names");
-	dao.delete(book.getName());
+	basedao.Remove(book);
 	return "list";
 }
 public String modify(){
 	return "modify";
 }
 public String update() throws SQLException{
-	dao.update(book);
+	basedao.update(book);
 	return "list";
 }
 

@@ -3,12 +3,12 @@
    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
    "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
+<constant name="struts.objectFactory" value="spring"/>
 <constant name="struts.devMode" value="true" />
 <constant name="struts.ui.theme" value="simple" />
    <package name="helloworld" extends="struts-default">
      <action name="addbook"
-     class="com.tutorialspoint.struts2.action.BookAction"
-     method="add"
+     class="bookAction"
      >
      <result name="add">/add.jsp</result>
      <result name="list">/list.jsp</result>
@@ -20,14 +20,14 @@
      <result name="list">/usershow.jsp</result>
       </action>
       <action name="edit"
-     class="com.tutorialspoint.struts2.action.BookAction"
+     class="bookAction"
      >
      <result name="list">/list.jsp</result>
      <result name="modify">/modify.jsp</result>
       </action>
       
       <action name="showlist"
-       class="com.tutorialspoint.struts2.action.BookAction"
+       class="bookAction"
      method="list"
       >
       <result name="list">/list.jsp</result>

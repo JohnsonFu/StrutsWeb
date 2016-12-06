@@ -15,7 +15,7 @@
 <label>书名</label><input type="text" name="book.name" /><br>
 <label>作者</label><input type="text" name="book.author" /><br>
 <label>价格</label><input type="text" name="book.price" /><br>
-<s:submit value="添加"></s:submit>
+<s:submit value="添加" method="add"></s:submit>
 </s:form>
 </body>
 </html>
