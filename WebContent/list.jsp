@@ -24,7 +24,9 @@
 <th><input type="hidden" name="book.name" value=<s:property  value='#item.name'/>>${item.name}</th>
 <th><input type="hidden" name="book.author" value=<s:property  value='#item.author'/>>${item.author}</th>
 <th><input type="hidden" name="book.price" value=<s:property  value='#item.price'/>>${item.price }</th>
-<th><s:submit type="button" method="remove"  value="删除"/></th>
+<th><s:if test="#item.price>50"><s:submit type="button" method="remove" style="color:red;" value="删除"/></s:if>
+<s:else><s:submit type="button" method="remove"  value="删除"/></s:else>
+</th>
 <th><s:submit type="button" method="modify"  value="编辑"/></th>
 </s:form>
 </tr>
