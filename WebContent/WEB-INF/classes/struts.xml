@@ -32,12 +32,20 @@
       >
       <result name="list">/list.jsp</result>
         </action>
+        
+         <action name="usershow"
+       class="bookAction"
+     method="list"
+      >
+      <result name="list">/usershow.jsp</result>
+        </action>
       
       <action name="user" 
             class="userAction" 
              >
             <result name="success">/usershow.jsp</result>
              <result name="fail">/index.jsp</result>
+             <result name="shopcar">/shopcar.jsp</result>
       </action>
    </package>
 </struts>

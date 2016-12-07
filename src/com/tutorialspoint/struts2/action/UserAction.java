@@ -49,6 +49,11 @@ public String buy(){
 	return "success";
 }
 
+public String delete(){
+	service.delete(book.getName());
+	return "shopcar";
+}
+
 public List<Book> getBooklist() {
 	booklist=service.getList();
 	return booklist;
@@ -62,12 +67,7 @@ public Book getBook() {
 public void setBook(Book book) {
 	this.book = book;
 }
-public String getMessage() {
-	return message;
-}
-public void setMessage(String message) {
-	this.message = message;
-}
+
 
 
 }

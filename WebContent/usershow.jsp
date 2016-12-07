@@ -17,7 +17,6 @@
 <th>作者</th>
 <th>价格</th>
 <th>添加</th>
-<th>编辑</th>
 </tr>
 <s:iterator id="item" value="booklist">
 <tr>
@@ -26,7 +25,6 @@
 <th><input type="hidden" name="book.author" value=<s:property  value='#item.author'/>>${item.author}</th>
 <s:if test="#item.price>50"><th style="color:red"></s:if><s:else><th></s:else><input type="hidden" name="book.price" value=<s:property  value='#item.price'/>>${item.price }</th>
 <th><s:submit type="button" method="buy"  value="添加"/></th>
-<th><s:submit type="button" method="modify"  value="编辑"/></th>
 </s:form>
 </tr>
 

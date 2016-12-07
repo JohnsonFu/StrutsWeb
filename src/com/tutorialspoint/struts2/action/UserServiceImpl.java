@@ -39,10 +39,20 @@ private BaseDao dao;
 		}
 		return null;
 	}
+	
+	public double getAllMoney(ArrayList<Book> list){
+		double result=0;
+		for(Book book:list){
+			result+=book.getPrice();
+		}
+		return result;
+	}
+	
 	@Override
 	public boolean buy() {
 		// TODO Auto-generated method stub
 		ArrayList<Book> shoplist=(ArrayList)ActionContext.getContext().getSession().get("shopcar");
+		
 		String name=ServletActionContext.getRequest().getParameter("book.name");
 		String author=ServletActionContext.getRequest().getParameter("book.author");
 		Double price=Double.parseDouble(ServletActionContext.getRequest().getParameter("book.price"));
@@ -61,8 +71,23 @@ private BaseDao dao;
 		if(!hasput){
 		shoplist.add(temp);
 		}
+		ActionContext.getContext().getSession().put("totalmoney", this.getAllMoney(shoplist));
 		ActionContext.getContext().getSession().put("shopcar", shoplist);
 		return !hasput;
+	}
+	@Override
+	public void delete(String name) {
+		// TODO Auto-generated method stub
+		ArrayList<Book> shoplist=(ArrayList)ActionContext.getContext().getSession().get("shopcar");
+		for(int i=0;i<shoplist.size();i++){
+			String bookname=shoplist.get(i).getName();
+			if(bookname.equals(name)){
+				shoplist.remove(i);
+				break;
+			}
+		}
+		ActionContext.getContext().getSession().put("shopcar", shoplist);
+		ActionContext.getContext().getSession().put("totalmoney", this.getAllMoney(shoplist));
 	}
 
 }

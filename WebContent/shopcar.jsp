@@ -8,26 +8,26 @@
 <title>Insert title here</title>
 </head>
 <body>
+用户名:<s:property value="#session.user.username"/>
+<a href="usershow.action">商城</a>
 <table border="1">
 <tr>
 <th>书名</th>
 <th>作者</th>
 <th>价格</th>
-<th>添加</th>
-<th>编辑</th>
+<th>删除</th>
 </tr>
 <s:iterator id="item" value="#session.shopcar">
 <tr>
-<s:form action="useredit">
+<s:form action="user">
 <th><input type="hidden" name="book.name" value=<s:property  value='#item.name'/>>${item.name}</th>
 <th><input type="hidden" name="book.author" value=<s:property  value='#item.author'/>>${item.author}</th>
 <s:if test="#item.price>50"><th style="color:red"></s:if><s:else><th></s:else><input type="hidden" name="book.price" value=<s:property  value='#item.price'/>>${item.price }</th>
-<th><s:submit type="button" method="buy"  value="添加"/></th>
-<th><s:submit type="button" method="modify"  value="编辑"/></th>
+<th><s:submit type="button" method="delete"  value="删除"/></th>
 </s:form>
 </tr>
-
 </s:iterator>
+总额:<s:property value="#session.totalmoney"/>
 </table>
 
 
