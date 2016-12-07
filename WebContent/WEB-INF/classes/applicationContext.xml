@@ -12,7 +12,7 @@
 	<bean id="serviceimpl" class="com.tutorialspoint.struts2.action.IBookServiceImpl">
 	<property name="dao" ref="daoimpl"></property>
 	</bean>
-	<bean id="loginAction" class="com.tutorialspoint.struts2.action.LoginAction">
+	<bean id="userAction" class="com.tutorialspoint.struts2.action.UserAction">
 	<property name="service" ref="userimpl"></property>
 	</bean>
 	<bean id="userimpl" class="com.tutorialspoint.struts2.action.UserServiceImpl">
