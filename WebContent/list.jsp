@@ -21,11 +21,11 @@
 <s:iterator id="item" value="booklist">
 <tr>
 <s:form action="edit">
-<th><input type="hidden" name="book.name" value=<s:property  value='#item.name'/>>${item.name}</th>
+<th><input type="hidden" name="book.id" value=<s:property value="#item.id" />><input type="hidden" name="book.name" value=<s:property  value='#item.name'/>>${item.name}</th>
 <th><input type="hidden" name="book.author" value=<s:property  value='#item.author'/>>${item.author}</th>
 <s:if test="#item.price>50"><th style="color:red"></s:if><s:else><th></s:else><input type="hidden" name="book.price" value=<s:property  value='#item.price'/>>${item.price }</th>
-<th><s:submit type="button" method="remove"  value="删除"/></th>
 <th><s:submit type="button" method="modify"  value="编辑"/></th>
+<th><s:submit type="button" method="remove"  value="删除"/></th>
 </s:form>
 </tr>
 

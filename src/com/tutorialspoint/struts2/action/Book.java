@@ -8,6 +8,7 @@ public Book(String name, String author, double price) {
 		this.author = author;
 		this.price = price;
 	}
+private int id;
 private String name;
 private String author;
 private double price;
@@ -28,5 +29,11 @@ public double getPrice() {
 }
 public void setPrice(double price) {
 	this.price = price;
+}
+public int getId() {
+	return id;
+}
+public void setId(int id) {
+	this.id = id;
 }
 }

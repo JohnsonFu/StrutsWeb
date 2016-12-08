@@ -11,7 +11,7 @@
 <a href="add.jsp">添加书籍</a>
 <a href="showlist.action">书籍列表</a><br>
 <s:form action="edit">
-书名:<s:property value="book.name"></s:property><input type="hidden" name="book.name" value=<s:property  value='book.name'/>><br>
+书名:<s:property value="book.name"></s:property><input type="hidden" name="book.name"   value=<s:property  value='book.name'/>><input type="hidden" name="book.id" value=<s:property  value='book.id'/>><br>
 作者:<s:textfield name="book.author"></s:textfield><br>
 价格:<s:textfield name="book.price"></s:textfield><br>
 <s:submit value="修改" method="update"></s:submit>

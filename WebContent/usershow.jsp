@@ -21,7 +21,8 @@
 <s:iterator id="item" value="booklist">
 <tr>
 <s:form action="user">
-<th><input type="hidden" name="book.name" value=<s:property  value='#item.name'/>>${item.name}</th>
+<th><input type="hidden" name="book.name" value=<s:property  value='#item.name'/>>${item.name}
+<input type="hidden" name="book.id" value=<s:property  value='#item.id'/>></th>
 <th><input type="hidden" name="book.author" value=<s:property  value='#item.author'/>>${item.author}</th>
 <s:if test="#item.price>50"><th style="color:red"></s:if><s:else><th></s:else><input type="hidden" name="book.price" value=<s:property  value='#item.price'/>>${item.price }</th>
 <th><s:submit type="button" method="buy"  value="添加"/></th>

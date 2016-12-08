@@ -52,14 +52,11 @@ private BaseDao dao;
 	public boolean buy() {
 		// TODO Auto-generated method stub
 		ArrayList<Book> shoplist=(ArrayList)ActionContext.getContext().getSession().get("shopcar");
-		
+		String id=ServletActionContext.getRequest().getParameter("book.id");
 		String name=ServletActionContext.getRequest().getParameter("book.name");
 		String author=ServletActionContext.getRequest().getParameter("book.author");
 		Double price=Double.parseDouble(ServletActionContext.getRequest().getParameter("book.price"));
-		Book temp=new Book();
-		temp.setName(name);
-		temp.setAuthor(author);
-		temp.setPrice(price);
+		
 		boolean hasput=false;
 		for(int i=0;i<shoplist.size();i++){
 			String bookname=shoplist.get(i).getName();
@@ -69,6 +66,11 @@ private BaseDao dao;
 			}
 		}
 		if(!hasput){
+			Book temp=new Book();
+			temp.setName(name);
+			temp.setAuthor(author);
+			temp.setPrice(price);
+			temp.setId(Integer.parseInt(id));
 		shoplist.add(temp);
 		}
 		ActionContext.getContext().getSession().put("totalmoney", this.getAllMoney(shoplist));
@@ -76,12 +78,12 @@ private BaseDao dao;
 		return !hasput;
 	}
 	@Override
-	public void delete(String name) {
+	public void delete(int id) {
 		// TODO Auto-generated method stub
 		ArrayList<Book> shoplist=(ArrayList)ActionContext.getContext().getSession().get("shopcar");
 		for(int i=0;i<shoplist.size();i++){
-			String bookname=shoplist.get(i).getName();
-			if(bookname.equals(name)){
+			Integer bookid=shoplist.get(i).getId();
+			if(bookid.equals(id)){
 				shoplist.remove(i);
 				break;
 			}

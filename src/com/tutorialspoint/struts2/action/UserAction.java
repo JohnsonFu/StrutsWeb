@@ -50,7 +50,7 @@ public String buy(){
 }
 
 public String delete(){
-	service.delete(book.getName());
+	service.delete(book.getId());
 	return "shopcar";
 }
 

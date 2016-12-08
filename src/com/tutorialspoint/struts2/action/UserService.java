@@ -6,5 +6,5 @@ public interface UserService {
 public boolean login(User user);
 public List<Book> getList();
 public boolean buy();
-public void delete(String string);
+public void delete(int id);
 }
