@@ -10,6 +10,7 @@
 <body>
 <a href="#">添加书籍</a>
 <a href="showlist.action">书籍列表</a>
+<a href="monitor.jsp">在线监控</a>
 <s:form action="addbook">
 <s:label>添加书籍</s:label><br>
 <label>书名</label><input type="text" name="book.name" /><br>

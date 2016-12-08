@@ -15,4 +15,10 @@
       <s:submit value="登录" method="login"></s:submit>
    </s:form>
 </body>
+<script type="text/javascript">
+var msg="${requestScope.haslogin}";
+if(msg!=""){
+alert(msg);
+}
+</script>
 </html>

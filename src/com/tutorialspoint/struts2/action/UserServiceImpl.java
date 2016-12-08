@@ -3,6 +3,7 @@ package com.tutorialspoint.struts2.action;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.struts2.ServletActionContext;
 
@@ -16,6 +17,31 @@ private BaseDao dao;
 		if(dao.IsExist(user)){
 			ActionContext.getContext().getSession().put("user", user);
 			ActionContext.getContext().getSession().put("shopcar",new ArrayList<Book>());
+			Map counter=ActionContext.getContext().getApplication();
+			Integer tmp=(Integer)counter.get("onlinecount");
+			ArrayList<String> users=(ArrayList<String>)counter.get("users");
+			if(users==null){
+				users=new ArrayList<String>();
+				users.add(user.getUsername());
+				counter.put("users", users);
+			}else{
+				String username=user.getUsername();
+				for(String s:users){
+					if(s.equals(username)){
+						ServletActionContext.getRequest().setAttribute("haslogin", "该账号已经登陆!");
+						return false;
+					}
+				}
+				ServletActionContext.getRequest().removeAttribute("haslogin");
+				users.add(user.getUsername());
+				counter.put("users", users);
+			}
+			if(tmp==null){
+				int count=1;
+		counter.put("onlinecount", 1);
+			}else{
+				counter.put("onlinecount", tmp+1);
+			}
 			return true;
 		}else{
 		return false;
