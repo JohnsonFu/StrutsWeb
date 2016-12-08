@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.struts2.ServletActionContext;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -22,7 +25,7 @@ private BaseDao dao;
 			ArrayList<String> users=(ArrayList<String>)counter.get("users");
 			if(users==null){
 				users=new ArrayList<String>();
-				users.add(user.getUsername());
+				users.add(user.getUsername()+ServletActionContext.getRequest().getSession().getId());
 				counter.put("users", users);
 			}else{
 				String username=user.getUsername();
@@ -33,7 +36,7 @@ private BaseDao dao;
 					}
 				}
 				ServletActionContext.getRequest().removeAttribute("haslogin");
-				users.add(user.getUsername());
+				users.add(user.getUsername()+ServletActionContext.getRequest().getSession().getId());
 				counter.put("users", users);
 			}
 			if(tmp==null){
